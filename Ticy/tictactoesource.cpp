@@ -2,12 +2,38 @@
 #include <string>
 #include <conio.h>
 #include <iostream>
+std::string state;
+void initboard(){
+	state = "123456789";
+}
+void showboard(){
+	system("cls");
+	std::cout << "     " << state[0] << "   |    " << state[1] << "    |    " << state[2] << "   \n";
+	std::cout << " --------+---------+--------\n";
+	std::cout << "     " << state[3] << "   |    " << state[4] << "    |    " << state[5] << "   \n";
+	std::cout << " --------+---------+--------\n";
+	std::cout << "     " << state[6] << "   |    " << state[7] << "    |    " << state[8] << "   \n";
+}
+void ask(char turn){
+	int move;
+	std::cout << turn << "'s turn! Where would you like to go?\n";
+	do {
+		do {
+			std::cin >> move;
+			// TODO: Dummy Proof: don't crash on letters
+		} while (move < 1 || move > 9);
+	} while (state[move - 1] == 'X' || state[move - 1] == 'O');
+
+	state[move - 1] = turn;
+}
 void gamestart(){
-std::cout << "     1   |    2    |    3   \n";
-std::cout << " --------+---------+--------\n";
-std::cout << "     4   |    5    |    6   \n";
-std::cout << " --------+---------+--------\n";
-std::cout << "     7   |    8    |    9   \n";
+	initboard();
+	while (true){
+		showboard();
+		ask('X'); 
+		showboard();
+		ask('O');
+	}
 }
 int main(){
 	std::string userresponse;
