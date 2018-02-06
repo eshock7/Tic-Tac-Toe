@@ -3,9 +3,23 @@
 #include <conio.h>
 #include <iostream>
 using namespace std;
-string state;
+string state, winner, turns;
 void initboard(){
 	state = "123456789";
+	winner = "Nobody";
+	turns = "XOXOXOXOX";
+}
+bool checkwin(){
+	if ((state[0] == state[1] && state[1] == state[2])||
+		(state[3] == state[4] && state[4] == state[5]) ||
+		(state[6] == state[7] && state[7] == state[8]) ||
+		(state[0] == state[3] && state[3] == state[6]) ||
+		(state[1] == state[4] && state[4] == state[7]) ||
+		(state[2] == state[5] && state[5] == state[8]) ||
+		(state[0] == state[4] && state[4] == state[8]) ||
+		(state[2] == state[4] && state[4] == state[6]))
+		return true;
+	else return false;
 }
 void showboard(){
 	system("cls");
@@ -29,12 +43,17 @@ void ask(char turn){
 }
 void gamestart(){
 	initboard();
-	while (true){
+	for (int turn = 0; turn < 9;turn++){
+		char myturn = turns[turn];
 		showboard();
-		ask('X'); 
-		showboard();
-		ask('O');
+		ask(myturn);
+		if (checkwin()){
+			winner = "" + myturn;
+			break;
+		}
 	}
+	showboard();
+	cout << winner << " is the winner:)";
 }
 int main(){
 	string userresponse;
