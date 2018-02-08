@@ -48,7 +48,7 @@ void gamestart(){
 		showboard();
 		ask(myturn);
 		if (checkwin()){
-			winner = "" + myturn;
+			winner = string(1, myturn);
 			break;
 		}
 	}
