@@ -1,4 +1,5 @@
-
+//Tic Tac Toe
+//Dante Mason
 #include <string>
 #include <conio.h>
 #include <iostream>
@@ -53,17 +54,18 @@ void gamestart(){
 		}
 	}
 	showboard();
-	cout << winner << " is the winner:)";
+	cout << winner << " is the winner :)\n";
 }
 int main(){
 	string userresponse;
-	cout << "Do you think you have what it takes to battle me in...TIC TAC TOE?\n";
+	cout << "Do you want to play tic tac toe?(type yes to continue, or anything else to quit.)\n";
 	cin >> userresponse;
-	if (userresponse == "yes" || userresponse == "Yes"){
-		cout << "Then bring it on!\n";
+	while (userresponse == "yes" || userresponse == "Yes"){
 		gamestart();
+		cout << "Do you want to play again?\n";
+		cin >> userresponse;
 	}
-	else cout << "Come back when you are ready to face me WEAKLING!!!\n";
+	cout << "Come back soon! :)\n";
 	_getch();
 	return 0;
 }
